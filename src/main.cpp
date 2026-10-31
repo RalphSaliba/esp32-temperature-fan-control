@@ -9,7 +9,7 @@
 #define MOSFETPIN 12
 #define SCREEN_WIDTH 128
 #define SCREEN_HEIGHT 64
-float threshold = 10.0;
+float threshold = 20.0;
 
 DHT dht(DHTPIN, DHTTYPE);
 Adafruit_SH1106G display(SCREEN_WIDTH, SCREEN_HEIGHT, &Wire, -1);
@@ -18,13 +18,13 @@ void setup() {
    Serial.begin(115200);
    Wire.begin(8, 9);
    if(!(display.begin(0x3C, true))) { 
-    Serial.println("Display konnte nicht initialisiert werden");
+    Serial.println("Display could not be initialized");
     for(;;);
    }
    display.setTextSize(1);
    display.setTextColor(SH110X_WHITE, SH110X_BLACK);
    dht.begin();
-   Serial.println("Sensor initialisiert");
+   Serial.println("Sensor initialized");
    digitalWrite(MOSFETPIN, LOW);
    pinMode(MOSFETPIN, OUTPUT);
 }
