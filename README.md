@@ -19,7 +19,7 @@ Serial output for monitoring and debugging
 | DHT22 | Measures temperature and humidity |
 | OLED display (SH1106G) | Displays sensor readings |
 | MOSFET (IRLZ44N) | Switches the fan on and off |
-| 1N4007 diode | Protects against voltage spikes |
+| Diode (1N4007) | Protects against voltage spikes |
 | 4.7kΩ resistor | Limits the brief current flowing while the Gate charges or discharges |
 | 10kΩ  pulldown resistor | Provides a path from Gate to GND so the MOSFET stays off when the GPIO is floating |
 | DC fan | Provides cooling |
@@ -28,7 +28,8 @@ Serial output for monitoring and debugging
 The ESP32 microcontroller reads the temperature and humidity values measured by the DHT22 sensor. The values are then flashed on the OLED display, whose data line connects to GPIO8. The microcontroller compares the temperature value to a configured threshold and sends a HIGH or LOW signal. The MOSFET, whose Gate is connected to the selected GPIO12, switches the fan accordingly. When the temperature condition is met, the ESP32-S3 sets GPIO12 to HIGH, activating the N-channel MOSFET. The MOSFET acts as an electronic switch, allowing current to flow from the 5 V supply through the fan and then through the MOSFET to ground. When the GPIO output is LOW, the MOSFET switches off and interrupts the fan's current path. The flyback diode connected over the fan's wires serves to contain the voltage spike caused by the collapse of the fan's magnetic field, circulating the current until the energy dissipates.
 
 ## Circuit and Wiring
-![ESP32-S3 temperature monitoring and fan control circuit]
+<img width="3053" height="2744" alt="1793438077320" src="https://github.com/user-attachments/assets/125d02dd-d148-4e94-93c2-a0d3776b88a9" />
+
 The following table summarizes the connections between the ESP32-S3, the sensors, the display, and the fan control circuit.
 
 | Component | Pin / Terminal | ESP32-S3 Pin / Connection |
@@ -44,7 +45,7 @@ The following table summarizes the connections between the ESP32-S3, the sensors
 | MOSFET (IRLZ44N) | Source | GND |
 | MOSFET (IRLZ44N) | Drain | Fan negative terminal |
 | DC fan | Positive terminal | +5 V supply |
-| 1N4007 diode | Cathode (marked end) | Fan positive terminal |
+| Diode (1N4007) | Cathode (marked end) | Fan positive terminal |
 | 1N4007 diode | Anode | Fan negative terminal |
 | Gate pulldown resistor | One end | MOSFET Gate |
 | Gate pulldown resistor | Other end | GND |
@@ -72,7 +73,7 @@ The project uses the following libraries:
 5. Connect the ESP32-S3 board to your computer via USB.
 6. Build the project using PlatformIO.
 7. Upload the firmware to the board.
-8. Open the PlatformIO Serial Monitor at **115200 baud** to view the serial output.
+8. Open the PlatformIO Serial Monitor at 115200 baud to view the serial output.
 
 ### Configuration
 
