@@ -19,7 +19,7 @@ Serial output for monitoring and debugging
 | DHT22 | Measures temperature and humidity |
 | OLED display (SH1106G) | Displays sensor readings |
 | MOSFET (IRLZ44N) | Switches the fan on and off |
-| 1N4007 diode | Protects against voltage spikes |
+| Diode (1N4007) | Protects against voltage spikes |
 | 4.7kΩ resistor | Limits the brief current flowing while the Gate charges or discharges |
 | 10kΩ  pulldown resistor | Provides a path from Gate to GND so the MOSFET stays off when the GPIO is floating |
 | DC fan | Provides cooling |
@@ -44,7 +44,7 @@ The following table summarizes the connections between the ESP32-S3, the sensors
 | MOSFET (IRLZ44N) | Source | GND |
 | MOSFET (IRLZ44N) | Drain | Fan negative terminal |
 | DC fan | Positive terminal | +5 V supply |
-| 1N4007 diode | Cathode (marked end) | Fan positive terminal |
+| Diode (1N4007) | Cathode (marked end) | Fan positive terminal |
 | 1N4007 diode | Anode | Fan negative terminal |
 | Gate pulldown resistor | One end | MOSFET Gate |
 | Gate pulldown resistor | Other end | GND |
@@ -72,7 +72,7 @@ The project uses the following libraries:
 5. Connect the ESP32-S3 board to your computer via USB.
 6. Build the project using PlatformIO.
 7. Upload the firmware to the board.
-8. Open the PlatformIO Serial Monitor at **115200 baud** to view the serial output.
+8. Open the PlatformIO Serial Monitor at 115200 baud to view the serial output.
 
 ### Configuration
 
