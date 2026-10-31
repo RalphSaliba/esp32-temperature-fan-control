@@ -28,7 +28,8 @@ Serial output for monitoring and debugging
 The ESP32 microcontroller reads the temperature and humidity values measured by the DHT22 sensor. The values are then flashed on the OLED display, whose data line connects to GPIO8. The microcontroller compares the temperature value to a configured threshold and sends a HIGH or LOW signal. The MOSFET, whose Gate is connected to the selected GPIO12, switches the fan accordingly. When the temperature condition is met, the ESP32-S3 sets GPIO12 to HIGH, activating the N-channel MOSFET. The MOSFET acts as an electronic switch, allowing current to flow from the 5 V supply through the fan and then through the MOSFET to ground. When the GPIO output is LOW, the MOSFET switches off and interrupts the fan's current path. The flyback diode connected over the fan's wires serves to contain the voltage spike caused by the collapse of the fan's magnetic field, circulating the current until the energy dissipates.
 
 ## Circuit and Wiring
-![ESP32-S3 temperature monitoring and fan control circuit]
+<img width="3053" height="2744" alt="1793438077320" src="https://github.com/user-attachments/assets/125d02dd-d148-4e94-93c2-a0d3776b88a9" />
+
 The following table summarizes the connections between the ESP32-S3, the sensors, the display, and the fan control circuit.
 
 | Component | Pin / Terminal | ESP32-S3 Pin / Connection |
